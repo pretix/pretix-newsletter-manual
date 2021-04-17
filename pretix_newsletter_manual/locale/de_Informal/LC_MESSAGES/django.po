@@ -2,11 +2,179 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-07 19:01+0100\n"
-"PO-Revision-Date: \n"
-"Last-Translator: pretix team\n"
-"Language-Team: \n"
+"POT-Creation-Date: 2021-04-17 15:54+0200\n"
+"PO-Revision-Date: 2021-04-17 15:57+0200\n"
+"Last-Translator: Juliane Wessalowski <juliane.wessalowski@gmail.com>\n"
+"Language-Team: German (informal) <https://translate.pretix.eu/projects/"
+"pretix/pretix-plugin-newsletter-ml/de_Informal/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 2.4.1\n"
+
+#: pretix_newsletter_manual/__init__.py:16
+msgid "Newsletter address collection (manual)"
+msgstr "Newsletter-Adresssammlung (manuell)"
+
+#: pretix_newsletter_manual/__init__.py:18
+msgid "Manually collect newsletter registrations"
+msgstr "Manuelle Sammlung von Newsletter-Registrierungen"
+
+#: pretix_newsletter_manual/exporters.py:12
+msgid "Newsletter subscription requests"
+msgstr "Newsletter-Registrierungen"
+
+#: pretix_newsletter_manual/exporters.py:20
+msgid "Order code"
+msgstr "Bestellnummer"
+
+#: pretix_newsletter_manual/exporters.py:21
+msgid "Email"
+msgstr "E-Mail"
+
+#: pretix_newsletter_manual/exporters.py:22
+msgid "Request date"
+msgstr "Anfragedatum"
+
+#: pretix_newsletter_manual/exporters.py:23
+msgid "Invoice Name"
+msgstr "Rechnungsadresse: Name"
+
+#: pretix_newsletter_manual/signals.py:30
+msgid "Newsletter"
+msgstr "Newsletter"
+
+#: pretix_newsletter_manual/signals.py:72
+msgid "A newsletter subscription has been requested."
+msgstr "Eine Newsletter-Registrierung wurde angefragt."
+
+#: pretix_newsletter_manual/signals.py:95
+msgid "Yes, I want to receive the organizer's newsletter"
+msgstr "Ja, ich möchte den Newsletter des Veranstalters erhalten"
+
+#: pretix_newsletter_manual/templates/pretix_newsletter_manual/settings.html:5
+msgid "Newsletter integration"
+msgstr "Newsletter-Integration"
+
+#: pretix_newsletter_manual/templates/pretix_newsletter_manual/settings.html:7
+msgid ""
+"This plugin asks customers whether they want to subscribe to your "
+"newsletter. You can then export a list of all subscriptions through the "
+"export feature."
+msgstr ""
+"Diese Erweiterung fragt Kunden, ob diese einen Newsletter abonnieren "
+"möchten. Du kannst dann eine Liste aller Abo-Anfragen über den Exportbereich "
+"exportieren."
+
+#: pretix_newsletter_manual/templates/pretix_newsletter_manual/settings.html:13
+msgid ""
+"This plugin does NOT perform a double-opt-in for you, as required in some "
+"countries. Please make sure that a double opt-in is performed by your "
+"newsletter tool before you send out any newsletters."
+msgstr ""
+"Diese Erweiterung führt KEIN Double-Opt-In durch, das in machen Ländern "
+"notwendig ist. Bitte stellesicher, dass dein Newsletter-Programm das Double-"
+"Opt-In beim Import durchführt!"
+
+#: pretix_newsletter_manual/templates/pretix_newsletter_manual/settings.html:24
+msgid "Save"
+msgstr "Speichern"
+
+#: pretix_newsletter_manual/views.py:14
+msgid "Checkbox label"
+msgstr "Checkbox-Beschriftung"
+
+#~ msgid "Mailing list"
+#~ msgstr "Mailingliste"
+
+#~ msgid "A subscribe request for the mailing list has been sent."
+#~ msgstr "Eine Eintragung wurde an die Mailingliste geschickt."
+
+#~ msgid "Subscribe address"
+#~ msgstr "Eintragungs-Adresse"
+
+#~ msgid "Add emails to the list without asking users in the frontend"
+#~ msgstr "E-Mail-Adressen von Bestellern ohne Nachfrage zur Liste hinzufügen"
+
+#~ msgid ""
+#~ "Not recommended, might be considered illegal/unfair business practice in "
+#~ "your legislation."
+#~ msgstr ""
+#~ "Nicht empfohlen, könnte in deinem Land als illegal oder unlauterer "
+#~ "Wettbewerb gelten."
+
+#~ msgid "MailChimp"
+#~ msgstr "MailChimp"
+
+#~ msgid "MailChimp Client ID"
+#~ msgstr "MailChimp-Client-ID"
+
+#~ msgid "MailChimp Client Secret"
+#~ msgstr "MailChimp-Client-Secret"
+
+#~ msgid ""
+#~ "The user's email address has been added to the selected MailChimp list or "
+#~ "already is part of the list."
+#~ msgstr ""
+#~ "Die Adresse des Bestellers wurde zur ausgewählten MailChimp-Liste "
+#~ "hinzugefügt oder ist bereits darauf enthalten."
+
+#~ msgid ""
+#~ "The user's email address could not be added to the selected MailChimp "
+#~ "list due to an error."
+#~ msgstr ""
+#~ "Die Adresse des Bestellers konnte nicht zur ausgewählten MailChimp-Liste "
+#~ "hinzugefügt werden."
+
+#~ msgid "A MailChimp account has been connected"
+#~ msgstr "Ein MailChimp-Account wurde verbunden."
+
+#~ msgid "MailChimp Account"
+#~ msgstr "MailChimp-Konto"
+
+#~ msgid "Connected"
+#~ msgstr "Verbunden"
+
+#~ msgid "Disconnect"
+#~ msgstr "Trennen"
+
+#~ msgid "Connect to MailChimp"
+#~ msgstr "Mit MailChimp verbinden"
+
+#~ msgid ""
+#~ "Sorry, we had trouble communicating with the MailChimp API. Please try "
+#~ "again later."
+#~ msgstr ""
+#~ "Wir hatten Probleme, die MailChimp-API zu erreichen. Bitte später erneut "
+#~ "versuchen."
+
+#~ msgid ""
+#~ "<a {a_attr}>Click here</a> to check for new lists in your MailChimp "
+#~ "account."
+#~ msgstr ""
+#~ "<a {a_attr}>Hier klicken</a> um neue Listen aus dem MailChimp-Konto "
+#~ "abzurufen."
+
+#~ msgid "Add emails to the list without sending a confirmation mail"
+#~ msgstr ""
+#~ "E-Mail-Adressen direkt und ohne Bestätigungsmail zur Liste hinzufügen"
+
+#~ msgid "-- None --"
+#~ msgstr "-- keine --"
+
+#~ msgid ""
+#~ "Okay! Your pretix event is now disconnected from your MailChimp account."
+#~ msgstr ""
+#~ "Okay! Deine pretix-Veranstaltung ist nun von MailChimp-Konto getrennt."
+
+#~ msgid "Wonderful! You can now configure the MailChimp integration."
+#~ msgstr "Super! Du kannst nun die MailChimp-Integration konfigurieren."
+
+#~ msgid ""
+#~ "We refreshed your MailChimp lists, you can now go ahead with configuring "
+#~ "the correct one!"
+#~ msgstr ""
+#~ "Wir haben deine MailChimp-Listen neu geladen, Du kannst nun die richtige "
+#~ "auswählen."

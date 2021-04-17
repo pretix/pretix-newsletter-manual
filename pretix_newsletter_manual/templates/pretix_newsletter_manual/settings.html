@@ -1,0 +1,28 @@
+{% extends "pretixcontrol/event/settings_base.html" %}
+{% load i18n %}
+{% load bootstrap3 %}
+{% block inside %}
+    <h1>{% trans "Newsletter integration" %}</h1>
+    <p>
+        {% blocktrans trimmed %}
+            This plugin asks customers whether they want to subscribe to your newsletter. You can then export a list of
+            all subscriptions through the export feature.
+        {% endblocktrans %}
+    </p>
+    <div class="alert alert-warning">
+        {% blocktrans trimmed %}
+            This plugin does NOT perform a double-opt-in for you, as required in some countries. Please make sure that
+            a double opt-in is performed by your newsletter tool before you send out any newsletters.
+        {% endblocktrans %}
+    </div>
+    <form action="" method="post" class="form-horizontal" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% bootstrap_form_errors form %}
+        {% bootstrap_field form.newsletter_manual_text layout="horizontal" %}
+        <div class="form-group submit-group">
+            <button type="submit" class="btn btn-primary btn-save">
+                {% trans "Save" %}
+            </button>
+        </div>
+    </form>
+{% endblock %}

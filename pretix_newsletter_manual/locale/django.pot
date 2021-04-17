@@ -1,0 +1,84 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-17 15:54+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: pretix_newsletter_manual/__init__.py:16
+msgid "Newsletter address collection (manual)"
+msgstr ""
+
+#: pretix_newsletter_manual/__init__.py:18
+msgid "Manually collect newsletter registrations"
+msgstr ""
+
+#: pretix_newsletter_manual/exporters.py:12
+msgid "Newsletter subscription requests"
+msgstr ""
+
+#: pretix_newsletter_manual/exporters.py:20
+msgid "Order code"
+msgstr ""
+
+#: pretix_newsletter_manual/exporters.py:21
+msgid "Email"
+msgstr ""
+
+#: pretix_newsletter_manual/exporters.py:22
+msgid "Request date"
+msgstr ""
+
+#: pretix_newsletter_manual/exporters.py:23
+msgid "Invoice Name"
+msgstr ""
+
+#: pretix_newsletter_manual/signals.py:30
+msgid "Newsletter"
+msgstr ""
+
+#: pretix_newsletter_manual/signals.py:72
+msgid "A newsletter subscription has been requested."
+msgstr ""
+
+#: pretix_newsletter_manual/signals.py:95
+msgid "Yes, I want to receive the organizer's newsletter"
+msgstr ""
+
+#: pretix_newsletter_manual/templates/pretix_newsletter_manual/settings.html:5
+msgid "Newsletter integration"
+msgstr ""
+
+#: pretix_newsletter_manual/templates/pretix_newsletter_manual/settings.html:7
+msgid ""
+"This plugin asks customers whether they want to subscribe to your "
+"newsletter. You can then export a list of all subscriptions through the "
+"export feature."
+msgstr ""
+
+#: pretix_newsletter_manual/templates/pretix_newsletter_manual/settings.html:13
+msgid ""
+"This plugin does NOT perform a double-opt-in for you, as required in some "
+"countries. Please make sure that a double opt-in is performed by your "
+"newsletter tool before you send out any newsletters."
+msgstr ""
+
+#: pretix_newsletter_manual/templates/pretix_newsletter_manual/settings.html:24
+msgid "Save"
+msgstr ""
+
+#: pretix_newsletter_manual/views.py:14
+msgid "Checkbox label"
+msgstr ""
