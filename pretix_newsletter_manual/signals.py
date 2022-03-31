@@ -70,7 +70,7 @@ def pretixcontrol_logentry_display(sender, logentry, **kwargs):
     plains = {
         "pretix_newsletter_manual.request": _(
             "A newsletter subscription has been requested."
-        ),
+        )
     }
 
     if logentry.action_type in plains:

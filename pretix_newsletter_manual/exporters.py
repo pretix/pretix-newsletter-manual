@@ -21,7 +21,7 @@ class RequestListExporter(ListExporter):
             _("Email"),
             _("Request date"),
             _("Invoice Name"),
-            _("Attendee Name")
+            _("Attendee Name"),
         ]
 
         if self.event:
@@ -41,9 +41,7 @@ class RequestListExporter(ListExporter):
             ]
 
             try:
-                row += [
-                    r.order.invoice_address.name,
-                ]
+                row += [r.order.invoice_address.name]
                 if self.event and len(name_scheme["fields"]) > 1:
                     for k, label, w in name_scheme["fields"]:
                         row.append(r.order.invoice_address.name_parts.get(k, ""))
@@ -57,19 +55,17 @@ class RequestListExporter(ListExporter):
                     )
                 )
             try:
-                row += [
-                    r.order.attendee_name,
-                ]
+                row += [r.order.attendee_name]
                 if self.event and len(name_scheme["fields"]) > 1:
                     for k, label, w in name_scheme["fields"]:
                         row.append(r.order.attendee_name_parts.get(k, ""))
-            except AttendeeName.DoesNotExist:
+            except Exception:
                 row += [""] * (
-                        1
-                        + (
-                            len(name_scheme["fields"])
-                            if self.event and len(name_scheme["fields"]) > 1
-                            else 0
-                        )
+                    1
+                    + (
+                        len(name_scheme["fields"])
+                        if self.event and len(name_scheme["fields"]) > 1
+                        else 0
+                    )
                 )
             yield row
