@@ -1,7 +1,6 @@
 import pytz
 from django.utils.translation import gettext as _, gettext_lazy
 from pretix.base.exporter import ListExporter
-from pretix.base.models.orders import InvoiceAddress
 from pretix.base.settings import PERSON_NAME_SCHEMES
 
 from .models import NewsletterRequest
@@ -20,8 +19,7 @@ class RequestListExporter(ListExporter):
             _("Order code"),
             _("Email"),
             _("Request date"),
-            _("Invoice Name"),
-            _("Attendee Name"),
+            _("Invoice/Attendee Name"),
         ]
 
         if self.event:
@@ -39,27 +37,19 @@ class RequestListExporter(ListExporter):
                 r.order.email,
                 r.created.astimezone(tz).strftime("%Y-%m-%d"),
             ]
-
-            try:
+            if r.order.invoice_address.name:
                 row += [r.order.invoice_address.name]
                 if self.event and len(name_scheme["fields"]) > 1:
                     for k, label, w in name_scheme["fields"]:
                         row.append(r.order.invoice_address.name_parts.get(k, ""))
-            except InvoiceAddress.DoesNotExist:
-                row += [""] * (
-                    1
-                    + (
-                        len(name_scheme["fields"])
-                        if self.event and len(name_scheme["fields"]) > 1
-                        else 0
-                    )
-                )
-            try:
-                row += [r.order.attendee_name]
+            elif r.order.positions.all()[0].attendee_name:
+                row += [r.order.positions.all()[0].attendee_name]
                 if self.event and len(name_scheme["fields"]) > 1:
                     for k, label, w in name_scheme["fields"]:
-                        row.append(r.order.attendee_name_parts.get(k, ""))
-            except Exception:
+                        row.append(
+                            r.order.positions.all()[0].attendee_name_parts.get(k, "")
+                        )
+            else:
                 row += [""] * (
                     1
                     + (
