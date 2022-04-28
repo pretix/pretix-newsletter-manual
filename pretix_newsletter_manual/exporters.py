@@ -13,13 +13,13 @@ class RequestListExporter(ListExporter):
     def iterate_list(self, form_data):
         qs = NewsletterRequest.objects.filter(order__event__in=self.events).order_by(
             "created"
-        )
+        ).prefetch_related('order', 'order__all_positions')
 
         headers = [
             _("Order code"),
             _("Email"),
             _("Request date"),
-            _("Invoice/Attendee Name"),
+            _("Name"),
         ]
 
         if self.event:
@@ -29,9 +29,12 @@ class RequestListExporter(ListExporter):
                     headers.append(label)
         yield headers
 
+
         for r in qs.select_related("order", "order__event"):
             tz = pytz.timezone(r.order.event.settings.timezone)
-
+            possible_positions = [op for op in r.order.all_positions.all() if not op.canceled and op.attendee_name]
+            name_parts = possible_positions[0] if possible_positions else {}
+            
             row = [
                 r.order.code,
                 r.order.email,
@@ -42,13 +45,11 @@ class RequestListExporter(ListExporter):
                 if self.event and len(name_scheme["fields"]) > 1:
                     for k, label, w in name_scheme["fields"]:
                         row.append(r.order.invoice_address.name_parts.get(k, ""))
-            elif r.order.positions.all()[0].attendee_name:
-                row += [r.order.positions.all()[0].attendee_name]
+            elif name_parts:
+                row += [name_parts.attendee_name]
                 if self.event and len(name_scheme["fields"]) > 1:
                     for k, label, w in name_scheme["fields"]:
-                        row.append(
-                            r.order.positions.all()[0].attendee_name_parts.get(k, "")
-                        )
+                        row.append(name_parts.attendee_name_parts.get(k, ""))
             else:
                 row += [""] * (
                     1
@@ -58,4 +59,5 @@ class RequestListExporter(ListExporter):
                         else 0
                     )
                 )
+
             yield row
