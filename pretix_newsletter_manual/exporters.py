@@ -32,8 +32,7 @@ class RequestListExporter(ListExporter):
 
         for r in qs.select_related("order", "order__event"):
             tz = pytz.timezone(r.order.event.settings.timezone)
-            possible_positions = [op for op in r.order.all_positions.all() if not op.canceled and op.attendee_name]
-            name_parts = possible_positions[0] if possible_positions else {}
+            op_with_attendee_name = next((op for op in r.order.all_positions.all() if not op.canceled and op.attendee_name), None)
             
             row = [
                 r.order.code,
@@ -45,11 +44,11 @@ class RequestListExporter(ListExporter):
                 if self.event and len(name_scheme["fields"]) > 1:
                     for k, label, w in name_scheme["fields"]:
                         row.append(r.order.invoice_address.name_parts.get(k, ""))
-            elif name_parts:
-                row += [name_parts.attendee_name]
+            elif op_with_attendee_name:
+                row += [op_with_attendee_name.attendee_name]
                 if self.event and len(name_scheme["fields"]) > 1:
                     for k, label, w in name_scheme["fields"]:
-                        row.append(name_parts.attendee_name_parts.get(k, ""))
+                        row.append(op_with_attendee_name.attendee_name_parts.get(k, ""))
             else:
                 row += [""] * (
                     1
