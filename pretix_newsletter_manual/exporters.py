@@ -11,16 +11,13 @@ class RequestListExporter(ListExporter):
     verbose_name = gettext_lazy("Newsletter subscription requests")
 
     def iterate_list(self, form_data):
-        qs = NewsletterRequest.objects.filter(order__event__in=self.events).order_by(
-            "created"
-        ).prefetch_related('order', 'order__all_positions')
+        qs = (
+            NewsletterRequest.objects.filter(order__event__in=self.events)
+            .order_by("created")
+            .prefetch_related("order", "order__all_positions")
+        )
 
-        headers = [
-            _("Order code"),
-            _("Email"),
-            _("Request date"),
-            _("Name"),
-        ]
+        headers = [_("Order code"), _("Email"), _("Request date"), _("Name")]
 
         if self.event:
             name_scheme = PERSON_NAME_SCHEMES[self.event.settings.name_scheme]
@@ -29,11 +26,17 @@ class RequestListExporter(ListExporter):
                     headers.append(label)
         yield headers
 
-
         for r in qs.select_related("order", "order__event"):
             tz = pytz.timezone(r.order.event.settings.timezone)
-            op_with_attendee_name = next((op for op in r.order.all_positions.all() if not op.canceled and op.attendee_name), None)
-            
+            op_with_attendee_name = next(
+                (
+                    op
+                    for op in r.order.all_positions.all()
+                    if not op.canceled and op.attendee_name
+                ),
+                None,
+            )
+
             row = [
                 r.order.code,
                 r.order.email,
