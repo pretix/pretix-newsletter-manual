@@ -19,9 +19,11 @@ class RequestListExporter(ListExporter):
 
         headers = [_("Order code"), _("Email"), _("Request date"), _("Name")]
 
+        has_name_parts = False
         if self.event:
             name_scheme = PERSON_NAME_SCHEMES[self.event.settings.name_scheme]
-            if len(name_scheme["fields"]) > 1:
+            has_name_parts = len(name_scheme["fields"]) > 1
+            if has_name_parts:
                 for k, label, w in name_scheme["fields"]:
                     headers.append(label)
         yield headers
@@ -44,12 +46,12 @@ class RequestListExporter(ListExporter):
             ]
             if r.order.invoice_address.name:
                 row += [r.order.invoice_address.name]
-                if self.event and len(name_scheme["fields"]) > 1:
+                if has_name_parts:
                     for k, label, w in name_scheme["fields"]:
                         row.append(r.order.invoice_address.name_parts.get(k, ""))
             elif op_with_attendee_name:
                 row += [op_with_attendee_name.attendee_name]
-                if self.event and len(name_scheme["fields"]) > 1:
+                if has_name_parts:
                     for k, label, w in name_scheme["fields"]:
                         row.append(op_with_attendee_name.attendee_name_parts.get(k, ""))
             else:
@@ -57,7 +59,7 @@ class RequestListExporter(ListExporter):
                     1
                     + (
                         len(name_scheme["fields"])
-                        if self.event and len(name_scheme["fields"]) > 1
+                        if has_name_parts
                         else 0
                     )
                 )
