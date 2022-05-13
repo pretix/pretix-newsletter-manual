@@ -8,9 +8,7 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-        ("pretixbase", "0181_team_can_checkin_orders"),
-    ]
+    dependencies = [("pretixbase", "0181_team_can_checkin_orders")]
 
     operations = [
         migrations.CreateModel(
@@ -31,5 +29,5 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-        ),
+        )
     ]

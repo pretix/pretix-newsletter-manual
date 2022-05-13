@@ -11,9 +11,7 @@ logger = logging.getLogger(__name__)
 
 class NewsletterSettingsForm(SettingsForm):
     newsletter_manual_text = I18nFormField(
-        label=_("Checkbox label"),
-        required=True,
-        widget=I18nTextInput,
+        label=_("Checkbox label"), required=True, widget=I18nTextInput
     )
 
 

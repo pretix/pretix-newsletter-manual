@@ -7,5 +7,5 @@ urlpatterns = [
         r"^control/event/(?P<organizer>[^/]+)/(?P<event>[^/]+)/newsletter_manual/settings$",
         ManualSettings.as_view(),
         name="settings",
-    ),
+    )
 ]
