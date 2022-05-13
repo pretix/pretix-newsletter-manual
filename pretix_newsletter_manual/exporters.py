@@ -56,12 +56,7 @@ class RequestListExporter(ListExporter):
                         row.append(op_with_attendee_name.attendee_name_parts.get(k, ""))
             else:
                 row += [""] * (
-                    1
-                    + (
-                        len(name_scheme["fields"])
-                        if has_name_parts
-                        else 0
-                    )
+                    1 + (len(name_scheme["fields"]) if has_name_parts else 0)
                 )
 
             yield row
