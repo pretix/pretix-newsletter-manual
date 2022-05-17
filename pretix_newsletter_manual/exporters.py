@@ -44,7 +44,7 @@ class RequestListExporter(ListExporter):
                 r.order.email,
                 r.created.astimezone(tz).strftime("%Y-%m-%d"),
             ]
-            if r.order.invoice_address.name:
+            if r.order.invoice_address and r.order.invoice_address.name:
                 row += [r.order.invoice_address.name]
                 if has_name_parts:
                     for k, label, w in name_scheme["fields"]:
