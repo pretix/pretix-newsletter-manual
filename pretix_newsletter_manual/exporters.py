@@ -1,6 +1,7 @@
 import pytz
 from django.utils.translation import gettext as _, gettext_lazy
 from pretix.base.exporter import ListExporter
+from pretix.base.models.orders import InvoiceAddress
 from pretix.base.settings import PERSON_NAME_SCHEMES
 
 from .models import NewsletterRequest
@@ -44,11 +45,15 @@ class RequestListExporter(ListExporter):
                 r.order.email,
                 r.created.astimezone(tz).strftime("%Y-%m-%d"),
             ]
-            if r.order.invoice_address and r.order.invoice_address.name:
-                row += [r.order.invoice_address.name]
+            try:
+                invoice_address = r.order.invoice_address
+            except InvoiceAddress.DoesNotExist:
+                invoice_address = None
+            if invoice_address and invoice_address.name:
+                row += [invoice_address.name]
                 if has_name_parts:
                     for k, label, w in name_scheme["fields"]:
-                        row.append(r.order.invoice_address.name_parts.get(k, ""))
+                        row.append(invoice_address.name_parts.get(k, ""))
             elif op_with_attendee_name:
                 row += [op_with_attendee_name.attendee_name]
                 if has_name_parts:
