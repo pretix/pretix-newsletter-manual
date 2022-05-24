@@ -48,7 +48,7 @@ class RequestListExporter(ListExporter):
             try:
                 invoice_address = r.order.invoice_address
             except InvoiceAddress.DoesNotExist:
-                invoice_address = False
+                invoice_address = None
             if invoice_address and invoice_address.name:
                 row += [invoice_address.name]
                 if has_name_parts:
