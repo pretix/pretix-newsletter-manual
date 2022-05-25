@@ -1,7 +1,7 @@
 from django import forms
 from django.dispatch import receiver
 from django.urls import resolve, reverse
-from django.utils.translation import ugettext_lazy as _, ugettext_noop
+from django.utils.translation import gettext_lazy as _, gettext_noop
 from i18nfield.strings import LazyI18nString
 from pretix.base.settings import settings_hierarkey
 from pretix.base.signals import (
@@ -92,7 +92,7 @@ def register_data_exporter_multi(sender, **kwargs):
 settings_hierarkey.add_default(
     "newsletter_manual_text",
     LazyI18nString.from_gettext(
-        ugettext_noop("Yes, I want to receive the organizer's newsletter")
+        gettext_noop("Yes, I want to receive the organizer's newsletter")
     ),
     LazyI18nString,
 )
