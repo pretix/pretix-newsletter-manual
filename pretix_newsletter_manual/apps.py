@@ -8,6 +8,7 @@ except ImportError:
 
 
 class PluginApp(PluginConfig):
+    default = True
     name = "pretix_newsletter_manual"
     verbose_name = "Newsletter address collection (manual)"
 
