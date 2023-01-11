@@ -1,5 +1,5 @@
 import pytz
-from django.utils.translation import gettext as _, gettext_lazy
+from django.utils.translation import gettext as _, gettext_lazy, pgettext_lazy
 from pretix.base.exporter import ListExporter
 from pretix.base.models.orders import InvoiceAddress
 from pretix.base.settings import PERSON_NAME_SCHEMES
@@ -10,6 +10,8 @@ from .models import NewsletterRequest
 class RequestListExporter(ListExporter):
     identifier = "newsletter_manual_requestlist"
     verbose_name = gettext_lazy("Newsletter subscription requests")
+    category = pgettext_lazy('export_category', 'Newsletter')
+    description = gettext_lazy('Download a spreadsheet of all users that requested a newsletter subscription.')
 
     def iterate_list(self, form_data):
         qs = (
