@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-17 15:54+0200\n"
+"POT-Creation-Date: 2023-01-11 13:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pretix_newsletter_manual/__init__.py:16
+#: pretix_newsletter_manual/apps.py:16
 msgid "Newsletter address collection (manual)"
 msgstr ""
 
-#: pretix_newsletter_manual/__init__.py:18
+#: pretix_newsletter_manual/apps.py:18
 msgid "Manually collect newsletter registrations"
 msgstr ""
 
@@ -29,20 +29,30 @@ msgstr ""
 msgid "Newsletter subscription requests"
 msgstr ""
 
-#: pretix_newsletter_manual/exporters.py:20
+#: pretix_newsletter_manual/exporters.py:13
+msgctxt "export_category"
+msgid "Newsletter"
+msgstr ""
+
+#: pretix_newsletter_manual/exporters.py:14
+msgid ""
+"Download a spreadsheet of all users that requested a newsletter subscription."
+msgstr ""
+
+#: pretix_newsletter_manual/exporters.py:23
 msgid "Order code"
 msgstr ""
 
-#: pretix_newsletter_manual/exporters.py:21
+#: pretix_newsletter_manual/exporters.py:23
 msgid "Email"
 msgstr ""
 
-#: pretix_newsletter_manual/exporters.py:22
+#: pretix_newsletter_manual/exporters.py:23
 msgid "Request date"
 msgstr ""
 
 #: pretix_newsletter_manual/exporters.py:23
-msgid "Invoice Name"
+msgid "Name"
 msgstr ""
 
 #: pretix_newsletter_manual/signals.py:30

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-17 15:54+0200\n"
-"PO-Revision-Date: 2021-04-17 15:57+0200\n"
+"POT-Creation-Date: 2023-01-11 13:36+0100\n"
+"PO-Revision-Date: 2023-01-11 13:37+0100\n"
 "Last-Translator: Juliane Wessalowski <juliane.wessalowski@gmail.com>\n"
 "Language-Team: German (informal) <https://translate.pretix.eu/projects/"
 "pretix/pretix-plugin-newsletter-ml/de_Informal/>\n"
@@ -12,13 +12,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
-#: pretix_newsletter_manual/__init__.py:16
+#: pretix_newsletter_manual/apps.py:16
 msgid "Newsletter address collection (manual)"
 msgstr "Newsletter-Adresssammlung (manuell)"
 
-#: pretix_newsletter_manual/__init__.py:18
+#: pretix_newsletter_manual/apps.py:18
 msgid "Manually collect newsletter registrations"
 msgstr "Manuelle Sammlung von Newsletter-Registrierungen"
 
@@ -26,21 +26,33 @@ msgstr "Manuelle Sammlung von Newsletter-Registrierungen"
 msgid "Newsletter subscription requests"
 msgstr "Newsletter-Registrierungen"
 
-#: pretix_newsletter_manual/exporters.py:20
+#: pretix_newsletter_manual/exporters.py:13
+msgctxt "export_category"
+msgid "Newsletter"
+msgstr "Newsletter"
+
+#: pretix_newsletter_manual/exporters.py:14
+msgid ""
+"Download a spreadsheet of all users that requested a newsletter subscription."
+msgstr ""
+"Tabelle (Excel oder CSV) mit allen Kund*innen, die eine Newsletter-Anmeldung "
+"ausgewählt haben."
+
+#: pretix_newsletter_manual/exporters.py:23
 msgid "Order code"
 msgstr "Bestellnummer"
 
-#: pretix_newsletter_manual/exporters.py:21
+#: pretix_newsletter_manual/exporters.py:23
 msgid "Email"
 msgstr "E-Mail"
 
-#: pretix_newsletter_manual/exporters.py:22
+#: pretix_newsletter_manual/exporters.py:23
 msgid "Request date"
 msgstr "Anfragedatum"
 
 #: pretix_newsletter_manual/exporters.py:23
-msgid "Invoice Name"
-msgstr "Rechnungsadresse: Name"
+msgid "Name"
+msgstr "Name"
 
 #: pretix_newsletter_manual/signals.py:30
 msgid "Newsletter"
@@ -85,6 +97,9 @@ msgstr "Speichern"
 #: pretix_newsletter_manual/views.py:14
 msgid "Checkbox label"
 msgstr "Checkbox-Beschriftung"
+
+#~ msgid "Invoice Name"
+#~ msgstr "Rechnungsadresse: Name"
 
 #~ msgid "Mailing list"
 #~ msgstr "Mailingliste"
