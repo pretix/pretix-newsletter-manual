@@ -3,6 +3,7 @@ from django.dispatch import receiver
 from django.urls import resolve, reverse
 from django.utils.translation import gettext_lazy as _, gettext_noop
 from i18nfield.strings import LazyI18nString
+from pretix.api.signals import order_api_details
 from pretix.base.settings import settings_hierarkey
 from pretix.base.signals import (
     logentry_display,
@@ -75,6 +76,18 @@ def pretixcontrol_logentry_display(sender, logentry, **kwargs):
 
     if logentry.action_type in plains:
         return plains[logentry.action_type]
+
+
+@receiver(signal=order_api_details, dispatch_uid="newsletter_manual_order_api_details")
+def recv_order_api_details(sender, order, **kwargs):
+    return {
+        "newsletter_manual": {
+            "newsletter_requested": order.meta_info_data.get(
+                "contact_form_data", {}
+            ).get("manual_newsletter")
+            or False
+        }
+    }
 
 
 @receiver(register_data_exporters, dispatch_uid="newsletter_manual_exporters")
