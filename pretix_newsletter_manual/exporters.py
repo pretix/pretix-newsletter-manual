@@ -1,4 +1,3 @@
-import pytz
 from django.utils.translation import gettext as _, gettext_lazy, pgettext_lazy
 from pretix.base.exporter import ListExporter
 from pretix.base.models.orders import InvoiceAddress
@@ -32,7 +31,7 @@ class RequestListExporter(ListExporter):
         yield headers
 
         for r in qs.select_related("order", "order__event"):
-            tz = pytz.timezone(r.order.event.settings.timezone)
+            tz = r.order.event.timezone
             op_with_attendee_name = next(
                 (
                     op
